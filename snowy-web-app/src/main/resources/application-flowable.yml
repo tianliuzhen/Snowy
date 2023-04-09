@@ -1,7 +1,7 @@
 # flowable springBoot自动注入配置
 flowable:
   # true 会对数据库中所有表进行更新操作。如果表不存在，则自动创建(建议开发时使用)
-  database-schema-update: false
+  database-schema-update: "false"
   # 关闭定时任务JOB
   async-executor-activate: false
   dmn:
@@ -24,6 +24,6 @@ flowable:
 snowy-flowable:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ry-only-flowable?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://localhost:3301/snowy-flowable?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
     username: root
     password: 123456
