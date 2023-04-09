@@ -81,6 +81,7 @@
         <ten.sdk.ses.version>3.1.455</ten.sdk.ses.version>
         <ten.sdk.sms.version>3.1.455</ten.sdk.sms.version>
         <tomcat.embed.core.version>9.0.72</tomcat.embed.core.version>
+        <flowable.version>6.7.2</flowable.version>
     </properties>
 
      <modules>
@@ -202,6 +203,13 @@
             <dependency>
                 <groupId>vip.xiaonuo</groupId>
                 <artifactId>snowy-plugin-sys</artifactId>
+                <version>${snowy.version}</version>
+            </dependency>
+
+            <!-- snowy-flowable -->
+            <dependency>
+                <groupId>vip.xiaonuo</groupId>
+                <artifactId>snowy-flowable</artifactId>
                 <version>${snowy.version}</version>
             </dependency>
 
@@ -644,6 +652,26 @@
                 <artifactId>mssql-jdbc</artifactId>
                 <version>${mssql.connector.java.version}</version>
             </dependency>-->
+
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+
+            <!--el表达式计算-->
+            <dependency>
+                <groupId>com.googlecode.aviator</groupId>
+                <artifactId>aviator</artifactId>
+                <version>5.3.3</version>
+            </dependency>
+
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.4.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

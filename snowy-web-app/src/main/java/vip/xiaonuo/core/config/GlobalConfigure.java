@@ -135,7 +135,9 @@ public class GlobalConfigure implements WebMvcConfigurer {
             "/sys/userCenter/findPasswordGetPhoneValidCode",
             "/sys/userCenter/findPasswordGetEmailValidCode",
             "/sys/userCenter/findPasswordByPhone",
-            "/sys/userCenter/findPasswordByEmail"
+            "/sys/userCenter/findPasswordByEmail",
+            /* flowable */
+            "/flowable/**"
     };
 
     /**
@@ -249,7 +251,8 @@ public class GlobalConfigure implements WebMvcConfigurer {
                     // 如果是预检请求，则立即返回到前端
                     SaRouter.match(SaHttpMethod.OPTIONS)
                             // OPTIONS预检请求，不做处理
-                            .free(r -> {})
+                            .free(r -> {
+                            })
                             .back();
                 })
 
@@ -258,7 +261,7 @@ public class GlobalConfigure implements WebMvcConfigurer {
                     // 由于过滤器中抛出的异常不进入全局异常处理，所以必须提供[异常处理函数]来处理[认证函数]里抛出的异常
                     // 在[异常处理函数]里的返回值，将作为字符串输出到前端，此处统一转为JSON输出前端
                     SaResponse saResponse = SaHolder.getResponse();
-                    saResponse.setHeader(Header.CONTENT_TYPE.getValue(), ContentType.JSON + ";charset=" +  CharsetUtil.UTF_8);
+                    saResponse.setHeader(Header.CONTENT_TYPE.getValue(), ContentType.JSON + ";charset=" + CharsetUtil.UTF_8);
                     return GlobalExceptionUtil.getCommonResult((Exception) e);
                 });
     }
@@ -332,7 +335,7 @@ public class GlobalConfigure implements WebMvcConfigurer {
                 Object sessionObj = session.getAttribute("repeatData");
                 if (ObjectUtil.isNotEmpty(sessionObj)) {
                     JSONObject sessionJsonObject = JSONUtil.parseObj(sessionObj);
-                    if(sessionJsonObject.containsKey(url)) {
+                    if (sessionJsonObject.containsKey(url)) {
                         JSONObject existRepeatJsonObject = sessionJsonObject.getJSONObject(url);
                         if (jsonObject.getStr("repeatParam").equals(existRepeatJsonObject.getStr("repeatParam")) &&
                                 jsonObject.getLong("repeatTime") - existRepeatJsonObject.getLong("repeatTime") < annotation.interval()) {
@@ -504,7 +507,7 @@ public class GlobalConfigure implements WebMvcConfigurer {
                 return "dm";
             } else if (url.contains("kingbase")) {
                 return "kingbase";
-            }  else {
+            } else {
                 return "mysql";
             }
         }
@@ -519,19 +522,29 @@ public class GlobalConfigure implements WebMvcConfigurer {
     @Component
     public static class CustomMetaObjectHandler implements MetaObjectHandler {
 
-        /** 删除标志 */
+        /**
+         * 删除标志
+         */
         private static final String DELETE_FLAG = "deleteFlag";
 
-        /** 创建人 */
+        /**
+         * 创建人
+         */
         private static final String CREATE_USER = "createUser";
 
-        /** 创建时间 */
+        /**
+         * 创建时间
+         */
         private static final String CREATE_TIME = "createTime";
 
-        /** 更新人 */
+        /**
+         * 更新人
+         */
         private static final String UPDATE_USER = "updateUser";
 
-        /** 更新时间 */
+        /**
+         * 更新时间
+         */
         private static final String UPDATE_TIME = "updateTime";
 
         @Override
@@ -542,21 +555,24 @@ public class GlobalConfigure implements WebMvcConfigurer {
                 if (ObjectUtil.isNull(deleteFlag)) {
                     setFieldValByName(DELETE_FLAG, EnumUtil.toString(CommonDeleteFlagEnum.NOT_DELETE), metaObject);
                 }
-            } catch (ReflectionException ignored) { }
+            } catch (ReflectionException ignored) {
+            }
             try {
                 //为空则设置createUser
                 Object createUser = metaObject.getValue(CREATE_USER);
                 if (ObjectUtil.isNull(createUser)) {
                     setFieldValByName(CREATE_USER, this.getUserId(), metaObject);
                 }
-            } catch (ReflectionException ignored) { }
+            } catch (ReflectionException ignored) {
+            }
             try {
                 //为空则设置createTime
                 Object createTime = metaObject.getValue(CREATE_TIME);
                 if (ObjectUtil.isNull(createTime)) {
                     setFieldValByName(CREATE_TIME, new Date(), metaObject);
                 }
-            } catch (ReflectionException ignored) { }
+            } catch (ReflectionException ignored) {
+            }
         }
 
         @Override
@@ -564,11 +580,13 @@ public class GlobalConfigure implements WebMvcConfigurer {
             try {
                 //设置updateUser
                 setFieldValByName(UPDATE_USER, this.getUserId(), metaObject);
-            } catch (ReflectionException ignored) { }
+            } catch (ReflectionException ignored) {
+            }
             try {
                 //设置updateTime
                 setFieldValByName(UPDATE_TIME, DateTime.now(), metaObject);
-            } catch (ReflectionException ignored) { }
+            } catch (ReflectionException ignored) {
+            }
         }
 
         /**

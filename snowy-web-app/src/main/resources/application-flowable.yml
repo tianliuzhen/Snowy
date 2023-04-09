@@ -1,0 +1,29 @@
+# flowable springBoot自动注入配置
+flowable:
+  # true 会对数据库中所有表进行更新操作。如果表不存在，则自动创建(建议开发时使用)
+  database-schema-update: false
+  # 关闭定时任务JOB
+  async-executor-activate: false
+  dmn:
+    enabled: false
+  cmmn:
+    enabled: false
+  idm:
+    enabled: false
+  async-history-executor-activate: false
+  check-process-definitions: false
+  content:
+    enabled: false
+  # 关闭自动注入
+  app:
+    enabled: false
+  eventregistry:
+    enabled: false
+
+#flowable数据源配置
+snowy-flowable:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ry-only-flowable?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456

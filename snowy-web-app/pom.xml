@@ -38,7 +38,7 @@
         </dependency>
 
         <!-- mysql -->
-         <dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -123,6 +123,18 @@
         <dependency>
             <groupId>vip.xiaonuo</groupId>
             <artifactId>snowy-plugin-sys</artifactId>
+        </dependency>
+
+        <!-- flowable工作流 -->
+        <dependency>
+            <groupId>vip.xiaonuo</groupId>
+            <artifactId>snowy-flowable</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>joda-time</artifactId>
+                    <groupId>joda-time</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
