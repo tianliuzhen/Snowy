@@ -268,11 +268,11 @@ public class GenBasicServiceImpl extends ServiceImpl<GenBasicMapper, GenBasic> i
             DatabaseMetaData metaData = conn.getMetaData();
             String url = metaData.getURL();
             String schema = null;
-            if (url.toLowerCase().contains("oracle")) {
+            if (url.toLowerCase().contains("jdbc:oracle")) {
                 schema = metaData.getUserName();
             }
             List<GenBasicTableResult> tables = new ArrayList<>();
-            rs = metaData.getTables(null, schema, "%", new String[]{"TABLE", "VIEW"});
+            rs = metaData.getTables(null, schema, "%", new String[]{"TABLE"});
             while (rs.next()) {
                 String tableName = rs.getString("TABLE_NAME");
                 if (!StrUtil.startWithIgnoreCase(tableName, "ACT_")) {
@@ -308,7 +308,7 @@ public class GenBasicServiceImpl extends ServiceImpl<GenBasicMapper, GenBasic> i
             DatabaseMetaData metaData = conn.getMetaData();
             String url = metaData.getURL();
             String schema = null;
-            if (url.toLowerCase().contains("oracle")) {
+            if (url.toLowerCase().contains("jdbc:oracle")) {
                 schema = metaData.getUserName();
             }
             List<GenBasicTableColumnResult> columns = new ArrayList<>();
@@ -344,17 +344,21 @@ public class GenBasicServiceImpl extends ServiceImpl<GenBasicMapper, GenBasic> i
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void execGenZip(GenBasicIdParam genBasicIdParam, HttpServletResponse response) throws IOException {
-        File tempFolder = this.genTempFolder(genBasicIdParam, response, true);
-        if(tempFolder == null) {
-            CommonResponseUtil.renderError(response, "代码生成基础不存在，id值为：" + genBasicIdParam.getId());
-            return;
+        try {
+            File tempFolder = this.genTempFolder(genBasicIdParam, response, true);
+            if(tempFolder == null) {
+                CommonResponseUtil.renderError(response, "代码生成基础不存在，id值为：" + genBasicIdParam.getId());
+                return;
+            }
+            // 压缩
+            File zip = ZipUtil.zip(tempFolder);
+            // 压缩完毕删除临时目录
+            FileUtil.del(tempFolder);
+            // 下载
+            CommonDownloadUtil.download(zip, response);
+        } catch (Exception e) {
+            CommonResponseUtil.renderError(response, e.getMessage());
         }
-        // 压缩
-        File zip = ZipUtil.zip(tempFolder);
-        // 压缩完毕删除临时目录
-        FileUtil.del(tempFolder);
-        // 下载
-        CommonDownloadUtil.download(zip, response);
     }
 
     @Transactional(rollbackFor = Exception.class)

@@ -151,6 +151,32 @@ snowy
 
 > 视频由小诺开源技术团队王同学（每天一点）进行录制
 
+## 架构原理图:fire:
+* 业务架构
+<p align="center">
+    <img src="https://pan.xiaonuo.vip/?explorer/share/fileOut&shareID=9ModuV8g&path=%7BshareItemLink%3A9ModuV8g%7D%2F"/>
+</p>
+
+* 应用架构
+<p align="center">
+    <img src="https://pan.xiaonuo.vip/?explorer/share/fileOut&shareID=9MofgHWg&path=%7BshareItemLink%3A9MofgHWg%7D%2F"/>
+</p>
+
+* 数据架构
+<p align="center">
+    <img src="https://pan.xiaonuo.vip/?explorer/share/fileOut&shareID=9Mof3msg&path=%7BshareItemLink%3A9Mof3msg%7D%2F"/>
+</p>
+
+* 技术架构
+<p align="center">
+    <img src="https://pan.xiaonuo.vip/?explorer/share/fileOut&shareID=9MogF8ww&path=%7BshareItemLink%3A9MogF8ww%7D%2F"/>
+</p>
+
+* 部署架构
+<p align="center">
+    <img src="https://pan.xiaonuo.vip/?explorer/share/fileOut&shareID=9MogXWKQ&path=%7BshareItemLink%3A9MogXWKQ%7D%2F"/>
+</p>
+
 ## 效果图:fire:
 
 <table>
@@ -221,7 +247,7 @@ QQ技术群：732230670（已满）、685395081
 ## 曾获荣誉
 
 <p align="center">
-    <img src="https://pan.xiaonuo.vip/?explorer/share/file&hash=ec54DtG4v8DfcUEPF0ACAHWW-urCcymI_0fSSaqMmMXKLsTWdHpQqH0e&name=/%E8%8D%A3%E8%AA%892021%E4%B8%8E2022.jpg"/>
+    <img src="https://pan.xiaonuo.vip/?explorer/share/file&hash=dbb3FuNNxaLbVqqyPAU5uGmVZfExktgLQCnmK76Oy7PocjmFHr12ob-x&name=/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230423085040.jpg"/>
 </p>
 
 ## 版权说明
