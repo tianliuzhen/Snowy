@@ -8,7 +8,7 @@ npm install
 ## 启动项目(开发模式)
 
 ```
-npm run serve
+npm run serve 或者 npm run dev
 ```
 
 启动完成后浏览器访问 http://localhost:81

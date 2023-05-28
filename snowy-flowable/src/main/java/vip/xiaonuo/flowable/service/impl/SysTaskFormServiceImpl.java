@@ -15,8 +15,7 @@ import java.util.List;
  * @date 2021-04-03
  */
 @Service
-public class SysTaskFormServiceImpl implements ISysTaskFormService
-{
+public class SysTaskFormServiceImpl implements ISysTaskFormService {
     @Autowired
     private SysTaskFormMapper sysTaskFormMapper;
 
@@ -27,8 +26,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 流程任务关联单
      */
     @Override
-    public SysTaskForm selectSysTaskFormById(Long id)
-    {
+    public SysTaskForm selectSysTaskFormById(Long id) {
         return sysTaskFormMapper.selectSysTaskFormById(id);
     }
 
@@ -39,8 +37,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 流程任务关联单
      */
     @Override
-    public List<SysTaskForm> selectSysTaskFormList(SysTaskForm sysTaskForm)
-    {
+    public List<SysTaskForm> selectSysTaskFormList(SysTaskForm sysTaskForm) {
         return sysTaskFormMapper.selectSysTaskFormList(sysTaskForm);
     }
 
@@ -51,8 +48,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 结果
      */
     @Override
-    public int insertSysTaskForm(SysTaskForm sysTaskForm)
-    {
+    public int insertSysTaskForm(SysTaskForm sysTaskForm) {
         return sysTaskFormMapper.insertSysTaskForm(sysTaskForm);
     }
 
@@ -63,8 +59,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 结果
      */
     @Override
-    public int updateSysTaskForm(SysTaskForm sysTaskForm)
-    {
+    public int updateSysTaskForm(SysTaskForm sysTaskForm) {
         return sysTaskFormMapper.updateSysTaskForm(sysTaskForm);
     }
 
@@ -75,8 +70,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 结果
      */
     @Override
-    public int deleteSysTaskFormByIds(Long[] ids)
-    {
+    public int deleteSysTaskFormByIds(Long[] ids) {
         return sysTaskFormMapper.deleteSysTaskFormByIds(ids);
     }
 
@@ -87,8 +81,7 @@ public class SysTaskFormServiceImpl implements ISysTaskFormService
      * @return 结果
      */
     @Override
-    public int deleteSysTaskFormById(Long id)
-    {
+    public int deleteSysTaskFormById(Long id) {
         return sysTaskFormMapper.deleteSysTaskFormById(id);
     }
 }
